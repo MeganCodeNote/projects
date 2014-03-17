@@ -1,0 +1,43 @@
+(define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))
+(fact 10)
+(fact 5)
+(define area (lambda (height width) (* height width)))
+(area (fact 3) (fact 4))
+
+(define first car)
+(define rest cdr)
+(define count (lambda (item L) (if (null? L) 0  (+ (if (equal? item (first L)) 1 0) ( count item (rest L))))))
+(count 0 (list 0 1 2 3 0 0))
+(count (quote the) (quote (the more the merrier the bigger the better)))
+
+(define foo (lambda (x) (lambda (y) (+ x y)))) 
+(define bar (foo 1)) 
+(bar 3)
+(define foo (lambda (x) (lambda (y) (lambda (z) (* (+ x y) z))))) 
+(((foo 1) 2) 3)
+
+(car (quote (a b c)) )
+(symbol? (car (quote (1 y))))
+(symbol? (car (quote (a b))))
+(symbol? (quote a))
+(symbol? (quote #t))
+
+(list? (list ))
+(null? (list ))
+(not (null? (quote ())))
+
+(length (quote (1 2 3 4 5)) )
+(length (cdr (quote (a))))
+
+(define a (list 1 2 3))
+(define b (quote (x y z)))
+(define c (append a b))
+(display c)
+(list? c)
+
+(equal? #t #f)
+(equal? #t #t)
+(equal? 3 3)
+(equal? 3 #t)
+(equal? (quote (a (x y) c)) (quote (a (x y) c)))
+(equal? (list ) (quote () ) )

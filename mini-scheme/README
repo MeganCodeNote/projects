@@ -1,0 +1,89 @@
+**** Description for Project2 **** 
+--------------------------------------------------------------------------------
+Project:  Mini-scheme Evaluator
+Language: Java
+Email:    MeganLeesf@gmail.com
+
+Created time: 03/07/2013  02.00pm
+
+
+####################### How to use ###########################
+
+mini-scheme.jar provides you with 3 modes to play with. The examples below show how
+to use "simple.scm" as an example, which is included in the project folder.
+ +------------------------------------------------------------------+
+ | simple.scm                                                       |
+ |------------------------------------------------------------------|
+ | (define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))  |
+ | (fact 5)                                                         |
+ | (define area (lambda (height width) (* height width)))           |
+ | (define b (area (fact 3) (fact 4)) )                             |
+ | (display b)                                                      |
+ +------------------------------------------------------------------+
+ 
+ 
+**** Mode 1 ****
+Evaluate from a .scm file, ONLY show values from your "display" calls
+$ java -jar mini-scheme.jar <file.scm>
+	
+	EXAMPLE: $ java -jar mini-scheme.jar simple.scm
+	
+	<<<< Result >>>>
+	144
+
+ 
+**** Mode 2 ****
+Evaluate from a .scm file VERBOSELY, show all the intermediate values
+$ java -jar mini-scheme.jar -v <file.scm>
+	
+	EXAMPLE: $ java -jar mini-scheme.jar -v simple.scm
+	
+	<<<< Result >>>>
+	| ]=> (define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))
+	fact
+	| ]=> (fact 5)
+	120
+	| ]=> (define area (lambda (height width) (* height width)))
+	area
+	| ]=> (define b (area (fact 3) (fact 4)))
+	b
+	| ]=> (display b)
+	144
+	built-in display
+
+
+**** Mode 3 ****
+Enter an interactive mode, perform read->eval->print loop.
+In this mode, you have to type in "quit" to quit, otherwise
+mini-scheme.jar will ask for more scheme expressions to evaluate.
+$ java -jar mini-scheme.jar (or $ java -jar mini-scheme.jar -i)
+
+	EXAMPLE: $ java -jar mini-scheme.jar
+	
+	<<<< Result >>>>
+	Type in your scheme expressions please:
+	(Enter "quit" to quit)
+
+	| ]=> (define a 1)
+	a
+	| ]=> (+ a 1)
+	2
+	| ]=> quit
+
+	Thank you for using mini-scheme
+
+
+#################### More test cases ###########################
+
+Along with "simple.scm", a more comprehensive file "test.scm" is
+provided for you to peek all the features implemented.
+
+Suggestion is that you could use Mode 2 -- eval from file verbosely
+to see the fun examples.
+
+	PLEASE ENTER: 
+		$ java -jar mini-scheme.jar -v test.scm
+	to view the examples. Thanks!
+
+
+### end of readme.txt
